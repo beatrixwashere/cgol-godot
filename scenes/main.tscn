@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://ckcq6guxfr252"]
+
+[ext_resource type="Script" uid="uid://bnxtxrlu1ih7r" path="res://scripts/grid.gd" id="1_o5qli"]
+
+[node name="main" type="Node2D" unique_id=1964145585]
+
+[node name="grid" type="Node2D" parent="." unique_id=405924222]
+script = ExtResource("1_o5qli")
+
+[node name="ui" type="CanvasLayer" parent="." unique_id=392875410]
+
+[node name="bg" type="ColorRect" parent="ui" unique_id=865965516]
+offset_top = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="tick" type="Button" parent="ui" unique_id=661899062]
+offset_left = 16.0
+offset_top = 976.0
+offset_right = 104.0
+offset_bottom = 1064.0
+text = "tick"
+
+[node name="play" type="Button" parent="ui" unique_id=1592654435]
+unique_name_in_owner = true
+offset_left = 120.0
+offset_top = 976.0
+offset_right = 208.0
+offset_bottom = 1064.0
+text = "play"
+
+[node name="reset" type="Button" parent="ui" unique_id=992956598]
+offset_left = 224.0
+offset_top = 976.0
+offset_right = 312.0
+offset_bottom = 1064.0
+text = "reset"
+
+[node name="random" type="Button" parent="ui" unique_id=1621828333]
+offset_left = 328.0
+offset_top = 976.0
+offset_right = 416.0
+offset_bottom = 1064.0
+text = "random"
+
+[node name="size" type="Label" parent="ui" unique_id=1495235984]
+offset_left = 576.0
+offset_top = 976.0
+offset_right = 616.0
+offset_bottom = 1048.0
+text = "x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="height" type="SpinBox" parent="ui/size" unique_id=1521201260]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -96.0
+offset_bottom = 72.0
+min_value = 1.0
+value = 20.0
+
+[node name="label" type="Label" parent="ui/size/height" unique_id=1344834007]
+layout_mode = 0
+offset_top = 72.0
+offset_right = 96.0
+offset_bottom = 96.0
+text = "height"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="width" type="SpinBox" parent="ui/size" unique_id=8112285]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_right = 136.0
+offset_bottom = 72.0
+min_value = 1.0
+max_value = 200.0
+value = 40.0
+
+[node name="label" type="Label" parent="ui/size/width" unique_id=1473127198]
+layout_mode = 0
+offset_top = 72.0
+offset_right = 96.0
+offset_bottom = 96.0
+text = "width"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="birth" type="Label" parent="ui" unique_id=1999510812]
+offset_left = 768.0
+offset_top = 976.0
+offset_right = 792.0
+offset_bottom = 1056.0
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bnums" type="LineEdit" parent="ui/birth" unique_id=1154325040]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 55.0
+text = "3"
+
+[node name="survive" type="Label" parent="ui" unique_id=1587999351]
+offset_left = 896.0
+offset_top = 976.0
+offset_right = 920.0
+offset_bottom = 1056.0
+text = "/S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="snums" type="LineEdit" parent="ui/survive" unique_id=287198016]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 55.0
+text = "23"
+
+[node name="speed" type="HSlider" parent="ui" unique_id=906083229]
+offset_left = 1616.0
+offset_top = 1016.0
+offset_right = 1904.0
+offset_bottom = 1032.0
+min_value = 2.0
+max_value = 30.0
+value = 22.0
+
+[node name="label" type="Label" parent="ui/speed" unique_id=476387176]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 288.0
+offset_bottom = -1.0
+text = "speed"
+horizontal_alignment = 1
+
+[connection signal="button_down" from="ui/tick" to="grid" method="tick_grid"]
+[connection signal="button_down" from="ui/play" to="grid" method="toggle_grid"]
+[connection signal="button_down" from="ui/reset" to="grid" method="new_grid"]
+[connection signal="button_down" from="ui/random" to="grid" method="randomize_grid"]
+[connection signal="value_changed" from="ui/speed" to="grid" method="change_speed"]
